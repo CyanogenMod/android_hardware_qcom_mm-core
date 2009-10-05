@@ -26,11 +26,6 @@
 #ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #--------------------------------------------------------------------------
 ifeq ($(strip $(QC_PROP)),true)
-
-
-ifeq "$(findstring qsd8250,$(TARGET_PRODUCT))" "qsd8250"
   include vendor/qcom-opensource/omx/mm-core/omxcore/Android.mk
-endif
-
 endif #QC_PROP
 
