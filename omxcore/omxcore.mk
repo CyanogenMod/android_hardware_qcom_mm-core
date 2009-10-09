@@ -28,7 +28,7 @@
 #--------------------------------------------------------------------------
 ##############################################################################
 
-vpath %.c $(SRCDIR)/omxcore/src/$(MM_CORE_TARGET) $(SRCDIR)/omxcore/src/common
+vpath %.c $(SRCDIR)/omxcore/src/8250 $(SRCDIR)/omxcore/src/common
 vpath %.cpp $(SRCDIR)/omxcore/src/common
 
 CFLAGS := $(QCT_CFLAGS)
