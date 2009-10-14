@@ -68,6 +68,9 @@ LOCAL_COPY_HEADERS      += inc/OMX_Video.h
 LOCAL_COPY_HEADERS      += inc/qc_omx_common.h
 LOCAL_COPY_HEADERS      += inc/qc_omx_component.h
 LOCAL_COPY_HEADERS      += inc/qc_omx_msg.h
+LOCAL_COPY_HEADERS      += inc/QOMX_AudioExtensions.h
+LOCAL_COPY_HEADERS      += inc/QOMX_AudioIndexExtensions.h
+
 
 #===============================================================================
 #             LIBRARY for Android apps
