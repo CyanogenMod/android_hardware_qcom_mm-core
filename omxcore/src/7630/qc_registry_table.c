@@ -49,7 +49,7 @@ omx_core_cb_type core[] =
     },
     NULL,   // Shared object library handle
     #ifdef _ANDROID_
-    "libOmxH264Dec.so",
+    "libOmxVdec.so",
     #else
     "libmm-vdec-omxh264.so.1",
     #endif
@@ -69,7 +69,7 @@ omx_core_cb_type core[] =
     },
     NULL,   // Shared object library handle
     #ifdef _ANDROID_
-    "libOmxMpeg4Dec.so",
+    "libOmxVdec.so",
     #else
     "libmm-vdec-omxmp4.so.1",
     #endif
@@ -89,7 +89,7 @@ omx_core_cb_type core[] =
     },
     NULL,   // Shared object library handle
     #ifdef _ANDROID_
-    "libOmxWmvDec.so",
+    "libOmxVdec.so",
     #else
     "libmm-vdec-omxwmv.so.1",
     #endif
@@ -109,7 +109,7 @@ omx_core_cb_type core[] =
     },
     NULL,   // Shared object library handle
     #ifdef _ANDROID_
-    "libOmxMpeg4Dec.so",
+    "libOmxVdec.so",
     #else
     "libmm-vdec-omxmp4.so.1",
     #endif
@@ -129,7 +129,7 @@ omx_core_cb_type core[] =
     },
     NULL,   // Shared object library handle
     #ifdef _ANDROID_
-    "libOmxVidEnc.so",
+    "libOmxVenc.so",
     #else
     "libmm-venc-omx.so.1",
     #endif
@@ -149,12 +149,32 @@ omx_core_cb_type core[] =
     },
     NULL,   // Shared object library handle
     #ifdef _ANDROID_
-    "libOmxVidEnc.so",
+    "libOmxVenc.so",
     #else
     "libmm-venc-omx.so.1",
     #endif
     {
       "video_encoder.h263",
+    }
+  },
+   {
+    "OMX.qcom.video.encoder.avc",
+    NULL, // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    #ifdef _ANDROID_
+    "libOmxVenc.so",
+    #else
+    "libmm-venc-omx.so.1",
+    #endif
+    {
+      "video_encoder.avc"
     }
   },
   {

@@ -49,7 +49,7 @@ omx_core_cb_type core[] =
       NULL
     },
     NULL,   // Shared object library handle
-    "libOmxH264Dec.so",
+    "libOmxVdec.so",
     {
       "video_decoder.avc"
     }
@@ -65,7 +65,7 @@ omx_core_cb_type core[] =
       NULL
     },
     NULL,   // Shared object library handle
-    "libOmxMpeg4Dec.so",
+    "libOmxVdec.so",
     {
       "video_decoder.mpeg4"
     }
@@ -81,7 +81,7 @@ omx_core_cb_type core[] =
       NULL
     },
     NULL,   // Shared object library handle
-    "libOmxWmvDec.so",
+    "libOmxVdec.so",
     {
       "video_decoder.vc1"
     }
@@ -97,7 +97,7 @@ omx_core_cb_type core[] =
       NULL
     },
     NULL,   // Shared object library handle
-    "libOmxMpeg4Dec.so",
+    "libOmxVdec.so",
     {
       "video_decoder.h263"
     }
@@ -113,7 +113,7 @@ omx_core_cb_type core[] =
       NULL
     },
     NULL,   // Shared object library handle
-    "libOmxVidEnc.so",
+    "libOmxVenc.so",
     {
       "video_encoder.mpeg4"
     }
@@ -129,9 +129,25 @@ omx_core_cb_type core[] =
       NULL
     },
     NULL,   // Shared object library handle
-    "libOmxVidEnc.so",
+    "libOmxVenc.so",
     {
       "video_encoder.h263"
+    }
+  },
+   {
+    "OMX.qcom.video.encoder.avc",
+    NULL, // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    "libOmxVenc.so",
+    {
+      "video_encoder.avc"
     }
   },
   {
