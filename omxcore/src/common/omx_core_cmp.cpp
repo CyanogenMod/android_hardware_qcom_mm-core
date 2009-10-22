@@ -210,8 +210,13 @@ qc_omx_component_get_extension_index(OMX_IN OMX_HANDLETYPE      hComp,
                   OMX_IN OMX_STRING      paramName,
                   OMX_OUT OMX_INDEXTYPE* indexType)
 {
-  DEBUG_PRINT("qc_omx_component_get_extension_index: Error, Not implemented\n");
-  return OMX_ErrorNotImplemented;
+  OMX_ERRORTYPE eRet = OMX_ErrorBadParameter;
+  qc_omx_component *pThis = (hComp)? (qc_omx_component *)(((OMX_COMPONENTTYPE *)hComp)->pComponentPrivate):NULL;
+  if(pThis)
+  {
+    eRet = pThis->get_extension_index(hComp,paramName,indexType);
+  }
+  return eRet;
 }
 
  OMX_ERRORTYPE
