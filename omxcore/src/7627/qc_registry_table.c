@@ -436,6 +436,126 @@ omx_core_cb_type core[] =
     {
       "audio_decoder.wma"
     }
+  },
+  {
+    "OMX.qcom.audio.decoder.wma10Pro",
+    NULL,   // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    #ifdef _ANDROID_
+    "libOmxWmaDec.so",
+    #else
+    "libmm-adec-omxwma.so.1",
+    #endif
+    {
+      "audio_decoder.wma"
+    }
+  },
+  {
+    "OMX.qcom.audio.decoder.tunneled.wma10Pro",
+    NULL,   // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    #ifdef _ANDROID_
+    "libOmxWmaDec.so",
+    #else
+    "libmm-adec-omxwma.so.1",
+    #endif
+    {
+      "audio_decoder.wma"
+    }
+  },
+  {
+    "OMX.qcom.audio.decoder.amrwb",
+    NULL,   // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    #ifdef _ANDROID_
+    "libOmxAmrwbDec.so",
+    #else
+    "libmm-adec-omxamrwb.so.1",
+    #endif
+    {
+      "audio_decoder.amrwb"
+    }
+  },
+  {
+    "OMX.qcom.audio.decoder.tunneled.amrwb",
+    NULL,   // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    #ifdef _ANDROID_
+    "libOmxAmrwbDec.so",
+    #else
+    "libmm-adec-omxamrwb.so.1",
+    #endif
+    {
+      "audio_decoder.amrwb"
+    }
+  },
+  {
+    "OMX.qcom.audio.decoder.amrwbp",
+    NULL,   // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+     #ifdef _ANDROID_
+    "libOmxAmrwbDec.so",
+    #else
+    "libmm-adec-omxamrwb.so.1",
+    #endif
+    {
+      "audio_decoder.amrwbp"
+    }
+  },
+  {
+    "OMX.qcom.audio.decoder.tunneled.amrwbp",
+    NULL,   // Create instance function
+    // Unique instance handle
+        {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    #ifdef _ANDROID_
+    "libOmxAmrwbDec.so",
+    #else
+    "libmm-adec-omxamrwb.so.1",
+    #endif
+    {
+      "audio_decoder.amrwbp"
+    }
   }
 };
 

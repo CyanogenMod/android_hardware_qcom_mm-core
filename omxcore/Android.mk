@@ -45,6 +45,8 @@ else ifeq "$(findstring msm7627,$(TARGET_PRODUCT))" "msm7627"
 MM_CORE_TARGET = 7627
 else ifeq "$(findstring msm7630,$(TARGET_PRODUCT))" "msm7630"
 MM_CORE_TARGET = 7630
+else
+MM_CORE_TARGET = default
 endif
 
 #===============================================================================
@@ -66,6 +68,9 @@ LOCAL_COPY_HEADERS      += inc/OMX_Video.h
 LOCAL_COPY_HEADERS      += inc/qc_omx_common.h
 LOCAL_COPY_HEADERS      += inc/qc_omx_component.h
 LOCAL_COPY_HEADERS      += inc/qc_omx_msg.h
+LOCAL_COPY_HEADERS      += inc/QOMX_AudioExtensions.h
+LOCAL_COPY_HEADERS      += inc/QOMX_AudioIndexExtensions.h
+
 
 #===============================================================================
 #             LIBRARY for Android apps

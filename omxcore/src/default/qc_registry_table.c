@@ -29,18 +29,18 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                             O p e n M A X   w r a p p e r s
                              O p e n  M A X   C o r e
 
-  This module contains the registry table for the QCOM's OpenMAX core.
+ This module contains a dummy registry table for the QCOM's OpenMAX core
+ with placeholders for actual values
 
 *//*========================================================================*/
-
 
 #include "qc_omx_core.h"
 
 omx_core_cb_type core[] =
 {
   {
-    "OMX.qcom.video.decoder.avc",
-    NULL, // Create instance function
+    "OMX.qcom.xxx.yyy.zzz",
+    NULL,   // Create instance function
     // Unique instance handle
     {
       NULL,
@@ -49,105 +49,13 @@ omx_core_cb_type core[] =
       NULL
     },
     NULL,   // Shared object library handle
-    "libOmxVdec.so",
+    #ifdef _ANDROID_
+    "abc.so",
+    #else
+    "efg.so.1",
+    #endif
     {
-      "video_decoder.avc"
-    }
-  },
-  {
-    "OMX.qcom.video.decoder.mpeg4",
-    NULL, // Create instance function
-    // Unique instance handle
-    {
-      NULL,
-      NULL,
-      NULL,
-      NULL
-    },
-    NULL,   // Shared object library handle
-    "libOmxVdec.so",
-    {
-      "video_decoder.mpeg4"
-    }
-  },
-  {
-    "OMX.qcom.video.decoder.vc1",
-    NULL, // Create instance function
-    // Unique instance handle
-    {
-      NULL,
-      NULL,
-      NULL,
-      NULL
-    },
-    NULL,   // Shared object library handle
-    "libOmxVdec.so",
-    {
-      "video_decoder.vc1"
-    }
-  },
-  {
-    "OMX.qcom.video.decoder.h263",
-    NULL, // Create instance function
-    // Unique instance handle
-    {
-      NULL,
-      NULL,
-      NULL,
-      NULL
-    },
-    NULL,   // Shared object library handle
-    "libOmxVdec.so",
-    {
-      "video_decoder.h263"
-    }
-  },
-   {
-    "OMX.qcom.video.encoder.mpeg4",
-    NULL, // Create instance function
-    // Unique instance handle
-    {
-      NULL,
-      NULL,
-      NULL,
-      NULL
-    },
-    NULL,   // Shared object library handle
-    "libOmxVenc.so",
-    {
-      "video_encoder.mpeg4"
-    }
-  },
-   {
-    "OMX.qcom.video.encoder.h263",
-    NULL, // Create instance function
-    // Unique instance handle
-    {
-      NULL,
-      NULL,
-      NULL,
-      NULL
-    },
-    NULL,   // Shared object library handle
-    "libOmxVenc.so",
-    {
-      "video_encoder.h263"
-    }
-  },
-   {
-    "OMX.qcom.video.encoder.avc",
-    NULL, // Create instance function
-    // Unique instance handle
-    {
-      NULL,
-      NULL,
-      NULL,
-      NULL
-    },
-    NULL,   // Shared object library handle
-    "libOmxVenc.so",
-    {
-      "video_encoder.avc"
+      "ijk.lmn"
     }
   }
 };

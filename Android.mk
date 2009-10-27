@@ -25,7 +25,8 @@
 #OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 #ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #--------------------------------------------------------------------------
-ifeq ($(strip $(QC_PROP)),true)
-  include vendor/qcom-opensource/omx/mm-core/omxcore/Android.mk
-endif #QC_PROP
 
+OMX_CORE_PATH := $(call my-dir)
+include $(CLEAR_VARS)
+
+include $(OMX_CORE_PATH)/omxcore/Android.mk
