@@ -810,6 +810,7 @@ OMX_GetRolesOfComponent(OMX_IN OMX_STRING compName,
   return eRet;
 }
 
+#ifndef _ENABLE_PARSER_
 OMX_API OMX_BOOL
 OMXConfigParser(
     OMX_PTR aInputParameters,
@@ -841,3 +842,4 @@ OMXConfigParser(
 
     return Status;
 }
+#endif
