@@ -58,7 +58,7 @@ extern "C"
 /* Audio extension strings */
 #define OMX_QCOM_INDEX_PARAM_AMRWBPLUS       "OMX.Qualcomm.index.audio.amrwbplus"
 #define OMX_QCOM_INDEX_PARAM_WMA10PRO        "OMX.Qualcomm.index.audio.wma10pro"
-#define OMX_QCOM_INDEX_PARAM_DECID           "OMX.Qualcomm.index.audio.decId"
+#define OMX_QCOM_INDEX_PARAM_SESSIONID       "OMX.Qualcomm.index.audio.sessionId"
 
 
 typedef enum QOMX_AUDIO_AMRBANDMODETYPE {
@@ -147,7 +147,7 @@ typedef struct QOMX_AUDIO_PARAM_WMA10PROTYPE {
  *  decId :  decoder Id for alsa to route data
  */
 typedef struct QOMX_AUDIO_STREAM_INFO_DATA {
-    OMX_U8  decId;
+    OMX_U8  sessionId;
 } QOMX_AUDIO_STREAM_INFO_DATA;
 
 
