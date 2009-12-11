@@ -47,7 +47,6 @@ else ifeq "$(findstring msm7625,$(TARGET_PRODUCT))" "msm7625"
 MM_CORE_TARGET = 7625
 else ifeq "$(findstring msm7630,$(TARGET_PRODUCT))" "msm7630"
 MM_CORE_TARGET = 7630
-OMXCORE_CFLAGS += -D_ENABLE_PARSER_
 else
 MM_CORE_TARGET = default
 endif
