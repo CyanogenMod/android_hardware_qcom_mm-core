@@ -64,8 +64,9 @@ extern "C"
 typedef enum QOMX_AUDIO_EXTENSIONS_INDEXTYPE
 {
     QOMX_IndexParamAudioAmrWbPlus       = 0x7F200000, /**< "OMX.Qualcomm.index.audio.amrwbplus" */
-    QOMX_IndexParamAudioWma10Pro        = 0x7F200001, /**< "OMX.Qualcomm.index.audio.amrwbplus" */
-    QOMX_IndexParamAudioSessionId           = 0x7F200002, /**< "OMX.Qualcomm.index.audio.decId" */
+    QOMX_IndexParamAudioWma10Pro        = 0x7F200001, /**< "OMX.Qualcomm.index.audio.wma10pro" */
+    QOMX_IndexParamAudioSessionId       = 0x7F200002, /**< "OMX.Qualcomm.index.audio.sessionId" */
+    QOMX_IndexParamAudioRecordPath      = 0x7F200003, /**< "OMX.Qualcomm.index.audio.recordpath" */
     QOMX_IndexParamAudioUnused          = 0x7F2FFFFF
 } QOMX_AUDIO_EXTENSIONS_INDEXTYPE;
 
