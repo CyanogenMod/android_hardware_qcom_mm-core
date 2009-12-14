@@ -230,6 +230,38 @@ omx_core_cb_type core[] =
       "audio_decoder.evrc"
     }
   },
+  {
+    "OMX.qcom.audio.decoder.amrwb",
+    NULL, // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    "libOmxAmrwbDec.so",
+    {
+      "audio_decoder.amrwb"
+    }
+  },
+  {
+    "OMX.qcom.audio.decoder.amrwbp",
+    NULL, // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,  // Shared object library handle
+    "libOmxAmrwbDec.so",
+    {
+      "audio_decoder.amrwbp"
+    }
+  },
 #ifndef _ANDROID_
   {
     "OMX.qcom.audio.decoder.tunneled.mp3",
@@ -280,6 +312,86 @@ omx_core_cb_type core[] =
     }
   },
     {
+    "OMX.qcom.audio.encoder.tunneled.aac",
+    NULL, // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    "libOmxAacEnc.so",
+    {
+      "audio_encoder.aac"
+    }
+  },
+  {
+    "OMX.qcom.audio.decoder.tunneled.Qcelp13",
+    NULL, // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    "libOmxQcelpDec.so",
+    {
+      "audio_decoder.Qcelp13"
+    }
+  },
+  {
+    "OMX.qcom.audio.decoder.tunneled.evrc",
+    NULL, // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    "libOmxEvrcDec.so",
+    {
+      "audio_decoder.evrc"
+    }
+  },
+  {
+    "OMX.qcom.audio.encoder.tunneled.amr",
+    NULL, // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    "libOmxAmrEnc.so",
+    {
+      "audio_encoder.amr"
+    }
+  },
+  {
+    "OMX.qcom.audio.decoder.wma",
+    NULL, // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    "libOmxWmaDec.so",
+    {
+      "audio_decoder.wma"
+    }
+  },
+  {
     "OMX.qcom.audio.decoder.tunneled.wma",
     NULL, // Create instance function
     // Unique instance handle
@@ -293,6 +405,38 @@ omx_core_cb_type core[] =
     "libOmxWmaDec.so",
     {
       "audio_decoder.wma"
+    }
+  },
+  {
+    "OMX.qcom.audio.decoder.tunneled.amrwb",
+    NULL,  // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    }
+    NULL,   // Shared object library handle
+    "libOmxAmrwbDec.so",
+    {
+      "audio_decoder.amrwb"
+    }
+  },
+  {
+    "OMX.qcom.audio.decoder.tunneled.amrwbp",
+    NULL,   // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+     NULL,   // Shared object library handle
+    "libOmxAmrwbDec.so",
+    {
+      "audio_decoder.amrwbp"
     }
   }
 #endif
