@@ -431,6 +431,16 @@ typedef struct OMX_QCOM_EXTRADATA_FRAMEINFO
    OMX_U32                nConcealedMacroblocks;
 } OMX_QCOM_EXTRADATA_FRAMEINFO;
 
+typedef struct OMX_QCOM_EXTRADATA_FRAMEDIMENSION
+{
+   /** Frame Dimensions added to each YUV buffer */
+   OMX_U32   nDecWidth;  /** Width  rounded to multiple of 16 */
+   OMX_U32   nDecHeight; /** Height rounded to multiple of 16 */
+   OMX_U32   nActualWidth; /** Actual Frame Width */
+   OMX_U32   nActualHeight; /** Actual Frame Height */
+
+}OMX_QCOM_EXTRADATA_FRAMEDIMENSION;
+
 typedef struct OMX_QCOM_H264EXTRADATA
 {
    OMX_U64 seiTimeStamp;
@@ -454,6 +464,7 @@ typedef enum OMX_QCOM_EXTRADATATYPE
    OMX_ExtraDataFrameInfo = 0x7F000001,
    OMX_ExtraDataH264 = 0x7F000002,
    OMX_ExtraDataVC1 = 0x7F000003,
+   OMX_ExtraDataFrameDimension = 0x7F000004,
 } OMX_QCOM_EXTRADATATYPE;
 
 
