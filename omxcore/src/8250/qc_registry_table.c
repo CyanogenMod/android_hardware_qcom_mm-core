@@ -296,6 +296,46 @@ omx_core_cb_type core[] =
     {
       "audio_decoder.evrc"
     }
+  },
+  {
+    "OMX.qcom.audio.encoder.tunneled.qcelp13",
+    NULL,   // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+#ifndef _ANDROID_
+    "libmm-aenc-omxqcelp13.so.1",
+#else
+    "libOmxQcelp13Enc.so",
+#endif
+    {
+      "audio_encoder.qcelp13"
+    }
+  },
+  {
+    "OMX.qcom.audio.encoder.tunneled.evrc",
+    NULL,   // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+#ifndef _ANDROID_
+    "libmm-aenc-omxevrc.so.1",
+#else
+    "libOmxEvrcEnc.so",
+#endif
+    {
+      "audio_encoder.evrc"
+    }
   }
 };
 
