@@ -274,7 +274,96 @@ enum OMX_QCOM_EXTN_INDEXTYPE
     /*"OMX.QCOM.index.config.interlaceformat */
     OMX_QcomIndexConfigInterlaced = 0x7F000005,
 
+   /* "OMX.QCOM.index.param.syntaxhdr" */
+    OMX_QcomIndexParamVideoSyntaxHdr = 0x7F000006,
+
+    /* "OMX.QCOM.index.config.intraperiod" */
+    OMX_QcomIndexConfigVideoIntraperiod = 0x7F000007,
+
+    /*"OMX.QCOM.index.config.ulbufferOccupancy" */
+    OMX_QcomIndexConfigVideoUlbufferOccupancy = 0x7F000008,
+
+    /* "OMX.QCOM.index.config.randomIntrarefresh" */
+    OMX_QcomIndexConfigVideoRandomIntrarefresh = 0x7F000009,
+
+	/* "OMX.QCOM.index.config.QPRange" */
+    OMX_QcomIndexConfigVideoQPRange = 0x7F00000A
 };
+
+/**
+ * This structure describes the parameters corresponding to the
+ * OMX_QCOM_VIDEO_PARAM_SYNTAXHDRTYPE extension. This parameter can be queried
+ * during the loaded state.
+ */
+typedef struct OMX_QCOM_VIDEO_PARAM_SYNTAXHDRTYPE
+{
+   OMX_U32 nSize;           /** Size of the structure in bytes */
+   OMX_VERSIONTYPE nVersion;/** OMX specification version information */
+   OMX_U32 nPortIndex;    /** Portindex which is extended by this structure */
+
+   OMX_U8* pBuff;         /** Buffer to store the header information */
+   OMX_U32 nBuffLen;      /** The buffer length in bytes */
+   OMX_U32 nFilledLen;    /** The number of bytes filled in to the buffer */
+} OMX_QCOM_VIDEO_PARAM_SYNTAXHDRTYPE;
+
+/**
+ * This structure describes the parameters corresponding to the
+ * OMX_QCOM_VIDEO_CONFIG_INTRAPERIODTYPE extension. This parameter can be set
+ * dynamically during any state except the state invalid.  This is set on the out port.
+ */
+typedef struct OMX_QCOM_VIDEO_CONFIG_INTRAPERIODTYPE
+{
+   OMX_U32 nSize;           /** Size of the structure in bytes */
+   OMX_VERSIONTYPE nVersion;/** OMX specification version information */
+   OMX_U32 nPortIndex;      /** Portindex which is extended by this structure */
+   OMX_U32 nPFrames;        /** The number of "p" frames between two "I" frames */
+} OMX_QCOM_VIDEO_CONFIG_INTRAPERIODTYPE;
+
+/**
+ * This structure describes the parameters corresponding to the
+ * OMX_QCOM_VIDEO_CONFIG_ULBUFFEROCCUPANCYTYPE extension. This parameter can be set
+ * dynamically during any state except the state invalid. This is used for the buffer negotiation
+ * with other clients.  This is set on the out port.
+ */
+typedef struct OMX_QCOM_VIDEO_CONFIG_ULBUFFEROCCUPANCYTYPE
+{
+   OMX_U32 nSize;            /** Size of the structure in bytes */
+   OMX_VERSIONTYPE nVersion; /** OMX specification version information */
+   OMX_U32 nPortIndex;       /** Portindex which is extended by this structure */
+   OMX_U32 nBufferOccupancy; /** The number of bytes to be set for the buffer occupancy */
+} OMX_QCOM_VIDEO_CONFIG_ULBUFFEROCCUPANCYTYPE;
+
+/**
+ * This structure describes the parameters corresponding to the
+ * OMX_QCOM_VIDEO_CONFIG_RANDOMINTRAREFRESHTYPE extension. This parameter can be set
+ * dynamically during any state except the state invalid. This is primarily used for the dynamic/random
+ * intrarefresh.  This is set on the out port.
+ */
+typedef struct OMX_QCOM_VIDEO_CONFIG_RANDOMINTRAREFRESHTYPE
+{
+   OMX_U32 nSize;           /** Size of the structure in bytes */
+   OMX_VERSIONTYPE nVersion;/** OMX specification version information */
+   OMX_U32 nPortIndex;      /** Portindex which is extended by this structure */
+   OMX_U32 nRirMBs;         /** The number of MBs to be set for intrarefresh */
+} OMX_QCOM_VIDEO_CONFIG_RANDOMINTRAREFRESHTYPE;
+
+
+/**
+ * This structure describes the parameters corresponding to the
+ * OMX_QCOM_VIDEO_CONFIG_QPRANGE extension. This parameter can be set
+ * dynamically during any state except the state invalid. This is primarily
+ * used for the min/max QP to be set from the application.  This
+ * is set on the out port.
+ */
+typedef struct OMX_QCOM_VIDEO_CONFIG_QPRANGE
+{
+   OMX_U32 nSize;           /** Size of the structure in bytes */
+   OMX_VERSIONTYPE nVersion;/** OMX specification version information */
+   OMX_U32 nPortIndex;      /** Portindex which is extended by this structure */
+   OMX_U32 nMinQP;          /** The number for minimum quantization parameter */
+   OMX_U32 nMaxQP;          /** The number for maximum quantization parameter */
+} OMX_QCOM_VIDEO_CONFIG_QPRANGE;
+
 
 typedef struct OMX_VENDOR_EXTRADATATYPE  {
     OMX_U32 nPortIndex;
