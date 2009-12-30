@@ -617,8 +617,46 @@ omx_core_cb_type core[] =
       "audio_encoder.evrc"
     }
   },
-
-
+  {
+    "OMX.qcom.audio.decoder.adpcm",
+    NULL,   // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    #ifdef _ANDROID_
+    "libOmxAdpcmDec.so",
+    #else
+    "libmm-adec-omxadpcm.so.1",
+    #endif
+    {
+      "audio_decoder.adpcm"
+    }
+  },
+  {
+    "OMX.qcom.audio.decoder.tunneled.adpcm",
+    NULL,   // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    #ifdef _ANDROID_
+    "libOmxAdpcmDec.so",
+    #else
+    "libmm-adec-omxadpcm.so.1",
+    #endif
+    {
+      "audio_decoder.adpcm"
+    }
+  }
 };
 
 const unsigned int SIZE_OF_CORE = sizeof(core) / sizeof(omx_core_cb_type);
