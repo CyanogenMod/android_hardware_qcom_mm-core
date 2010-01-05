@@ -103,6 +103,22 @@ omx_core_cb_type core[] =
     }
   },
   {
+    "OMX.qcom.video.encoder.avc",
+    NULL,   // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    "libOmxVidEnc.so",
+    {
+      "video_encoder.avc"
+    }
+  },
+  {
     "OMX.qcom.video.encoder.mpeg4",
     NULL,   // Create instance function
     // Unique instance handle
