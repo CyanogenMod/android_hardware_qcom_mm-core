@@ -249,7 +249,10 @@ enum OMX_QCOM_VIDEO_CODINGTYPE
  *  spec
  *   */
     OMX_QCOM_VIDEO_CodingVC1  = 0x7FA30C00 ,
-    OMX_QCOM_VIDEO_CodingWMV9 = 0x7FA30C01
+    OMX_QCOM_VIDEO_CodingWMV9 = 0x7FA30C01,
+    QOMX_VIDEO_CodingDivx = 0x7FA30C02,     /**< Value when coding is Divx */
+    QOMX_VIDEO_CodingSpark = 0x7FA30C03,     /**< Value when coding is Sorenson Spark */
+    QOMX_VIDEO_CodingVp = 0x7FA30C04
 };
 
 enum OMX_QCOM_EXTN_INDEXTYPE
@@ -287,7 +290,13 @@ enum OMX_QCOM_EXTN_INDEXTYPE
     OMX_QcomIndexConfigVideoRandomIntrarefresh = 0x7F000009,
 
 	/* "OMX.QCOM.index.config.QPRange" */
-    OMX_QcomIndexConfigVideoQPRange = 0x7F00000A
+    OMX_QcomIndexConfigVideoQPRange = 0x7F00000A,
+   /*"OMX.QCOM.index.param.Divxtype */
+    OMX_QcomIndexParamVideoDivx = 0x7F00000B,
+      /*"OMX.QCOM.index.param.Sparktype */
+    OMX_QcomIndexParamVideoSpark = 0x7F00000C,
+      /*"OMX.QCOM.index.param.Vptype */
+    OMX_QcomIndexParamVideoVp = 0x7F00000D,
 };
 
 /**
@@ -469,5 +478,130 @@ typedef enum OMX_QCOM_EXTRADATATYPE
 
 
 #define OMX_EXTRADATA_HEADER_SIZE 20
+
+/**
+ * DivX Versions
+ */
+typedef enum  QOMX_VIDEO_DIVXFORMATTYPE {
+    QOMX_VIDEO_DIVXFormatUnused = 0x01, /**< Format unused or unknown */
+    QOMX_VIDEO_DIVXFormat311    = 0x02, /**< DivX 3.11 */
+    QOMX_VIDEO_DIVXFormat4      = 0x04, /**< DivX 4 */
+    QOMX_VIDEO_DIVXFormat5      = 0x08, /**< DivX 5 */
+    QOMX_VIDEO_DIVXFormat6      = 0x10, /**< DivX 6 */
+    QOMX_VIDEO_DIVXFormatKhronosExtensions = 0x6F000000,
+    QOMX_VIDEO_DIVXFormatVendorStartUnused = 0x7F000000,
+    QOMX_VIDEO_DIVXFormatMax = 0x7FFFFFFF
+} QOMX_VIDEO_DIVXFORMATTYPE;
+
+/**
+ * DivX profile types, each profile indicates support for
+ * various performance bounds.
+ */
+typedef enum QOMX_VIDEO_DIVXPROFILETYPE {
+    QOMX_VIDEO_DivXProfileqMobile = 0x01, /**< qMobile Profile */
+    QOMX_VIDEO_DivXProfileMobile  = 0x02, /**< Mobile Profile */
+    QOMX_VIDEO_DivXProfileMT      = 0x04, /**< Mobile Theatre Profile */
+    QOMX_VIDEO_DivXProfileHT      = 0x08, /**< Home Theatre Profile */
+    QOMX_VIDEO_DivXProfileHD      = 0x10, /**< High Definition Profile */
+    QOMX_VIDEO_DIVXProfileKhronosExtensions = 0x6F000000,
+    QOMX_VIDEO_DIVXProfileVendorStartUnused = 0x7F000000,
+    QOMX_VIDEO_DIVXProfileMax = 0x7FFFFFFF
+} QOMX_VIDEO_DIVXPROFILETYPE;
+
+/**
+ * DivX Video Params
+ *
+ *  STRUCT MEMBERS:
+ *  nSize      : Size of the structure in bytes
+ *  nVersion   : OMX specification version information
+ *  nPortIndex : Port that this structure applies to
+ *  eFormat    : Version of DivX stream / data
+ *  eProfile   : Profile of DivX stream / data
+ */
+typedef struct QOMX_VIDEO_PARAM_DIVXTYPE {
+    OMX_U32 nSize;
+    OMX_VERSIONTYPE nVersion;
+    OMX_U32 nPortIndex;
+    QOMX_VIDEO_DIVXFORMATTYPE eFormat;
+    QOMX_VIDEO_DIVXPROFILETYPE eProfile;
+} QOMX_VIDEO_PARAM_DIVXTYPE;
+
+
+
+/**
+ * VP Versions
+ */
+typedef enum QOMX_VIDEO_VPFORMATTYPE {
+    QOMX_VIDEO_VPFormatUnused = 0x01, /**< Format unused or unknown */
+    QOMX_VIDEO_VPFormat6      = 0x02, /**< VP6 Video Format */
+    QOMX_VIDEO_VPFormat7      = 0x04, /**< VP7 Video Format */
+    QOMX_VIDEO_VPFormat8      = 0x08, /**< VP8 Video Format */
+    QOMX_VIDEO_VPFormatKhronosExtensions = 0x6F000000,
+    QOMX_VIDEO_VPFormatVendorStartUnused = 0x7F000000,
+    QOMX_VIDEO_VPFormatMax = 0x7FFFFFFF
+} QOMX_VIDEO_VPFORMATTYPE;
+
+/**
+ * VP profile types, each profile indicates support for various
+ * encoding tools.
+ */
+typedef enum QOMX_VIDEO_VPPROFILETYPE {
+    QOMX_VIDEO_VPProfileSimple   = 0x01, /**< Simple Profile, applies to VP6 only */
+    QOMX_VIDEO_VPProfileAdvanced = 0x02, /**< Advanced Profile, applies to VP6 only */
+    QOMX_VIDEO_VPProfileVersion0 = 0x04, /**< Version 0, applies to VP7 and VP8 */
+    QOMX_VIDEO_VPProfileVersion1 = 0x08, /**< Version 1, applies to VP7 and VP8 */
+    QOMX_VIDEO_VPProfileVersion2 = 0x10, /**< Version 2, applies to VP8 only */
+    QOMX_VIDEO_VPProfileVersion3 = 0x20, /**< Version 3, applies to VP8 only */
+    QOMX_VIDEO_VPProfileKhronosExtensions = 0x6F000000,
+    QOMX_VIDEO_VPProfileVendorStartUnused = 0x7F000000,
+    QOMX_VIDEO_VPProfileMax = 0x7FFFFFFF
+} QOMX_VIDEO_VPPROFILETYPE;
+
+/**
+ * VP Video Params
+ *
+ *  STRUCT MEMBERS:
+ *  nSize      : Size of the structure in bytes
+ *  nVersion   : OMX specification version information
+ *  nPortIndex : Port that this structure applies to
+ *  eFormat    : Format of VP stream / data
+ *  eProfile   : Profile or Version of VP stream / data
+ */
+typedef struct QOMX_VIDEO_PARAM_VPTYPE {
+    OMX_U32 nSize;
+    OMX_VERSIONTYPE nVersion;
+    OMX_U32 nPortIndex;
+    QOMX_VIDEO_VPFORMATTYPE eFormat;
+    QOMX_VIDEO_VPPROFILETYPE eProfile;
+} QOMX_VIDEO_PARAM_VPTYPE;
+
+/**
+ * Spark Versions
+ */
+typedef enum QOMX_VIDEO_SPARKFORMATTYPE {
+    QOMX_VIDEO_SparkFormatUnused = 0x01, /**< Format unused or unknown */
+    QOMX_VIDEO_SparkFormat0      = 0x02, /**< Video Format Version 0 */
+    QOMX_VIDEO_SparkFormat1      = 0x04, /**< Video Format Version 1 */
+    QOMX_VIDEO_SparkFormatKhronosExtensions = 0x6F000000,
+    QOMX_VIDEO_SparkFormatVendorStartUnused = 0x7F000000,
+    QOMX_VIDEO_SparkFormatMax = 0x7FFFFFFF
+} QOMX_VIDEO_SPARKFORMATTYPE;
+
+/**
+ * Spark Video Params
+ *
+ *  STRUCT MEMBERS:
+ *  nSize      : Size of the structure in bytes
+ *  nVersion   : OMX specification version information
+ *  nPortIndex : Port that this structure applies to
+ *  eFormat    : Version of Spark stream / data
+ */
+typedef struct QOMX_VIDEO_PARAM_SPARKTYPE {
+    OMX_U32 nSize;
+    OMX_VERSIONTYPE nVersion;
+    OMX_U32 nPortIndex;
+    QOMX_VIDEO_SPARKFORMATTYPE eFormat;
+} QOMX_VIDEO_PARAM_SPARKTYPE;
+
 
 #endif /* __OMX_QCOM_EXTENSIONS_H__ */
