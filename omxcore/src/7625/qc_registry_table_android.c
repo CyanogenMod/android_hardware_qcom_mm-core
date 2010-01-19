@@ -198,9 +198,8 @@ omx_core_cb_type core[] =
       "audio_decoder.Qcelp13"
     }
   },
-#ifndef _ANDROID_
   {
-    "OMX.qcom.audio.decoder.tunneled.mp3",
+    "OMX.qcom.audio.decoder.evrc",
     NULL, // Create instance function
     // Unique instance handle
     {
@@ -210,92 +209,11 @@ omx_core_cb_type core[] =
       NULL
     },
     NULL,   // Shared object library handle
-    "libOmxMp3Dec.so",
+    "libOmxEvrcDec.so",
     {
-      "audio_decoder.mp3"
-    }
-  },
-  {
-    "OMX.qcom.audio.decoder.tunneled.aac",
-    NULL, // Create instance function
-    // Unique instance handle
-    {
-      NULL,
-      NULL,
-      NULL,
-      NULL
-    },
-    NULL,   // Shared object library handle
-    "libOmxAacDec.so",
-    {
-      "audio_decoder.aac"
-    }
-  },
-  {
-    "OMX.qcom.audio.decoder.tunneled.amrnb",
-    NULL,   // Create instance function
-    // Unique instance handle
-    {
-      NULL,
-      NULL,
-      NULL,
-      NULL
-    },
-    NULL,   // Shared object library handle
-    "libOmxAmrDec.so",
-    {
-      "audio_decoder.amrnb"
-    }
-  },
-  {
-    "OMX.qcom.audio.encoder.tunneled.aac",
-    NULL, // Create instance function
-    // Unique instance handle
-    {
-      NULL,
-      NULL,
-      NULL,
-      NULL
-    },
-    NULL,   // Shared object library handle
-    "libOmxAacEnc.so",
-    {
-      "audio_encoder.aac"
-    }
-  },
-  {
-    "OMX.qcom.audio.decoder.tunneled.Qcelp13",
-    NULL, // Create instance function
-    // Unique instance handle
-    {
-      NULL,
-      NULL,
-      NULL,
-      NULL
-    },
-    NULL,   // Shared object library handle
-    "libOmxQcelpDec.so",
-    {
-      "audio_decoder.Qcelp13"
-    }
-  },
-  {
-    "OMX.qcom.audio.encoder.tunneled.amr",
-    NULL, // Create instance function
-    // Unique instance handle
-    {
-      NULL,
-      NULL,
-      NULL,
-      NULL
-    },
-    NULL,   // Shared object library handle
-    "libOmxAmrEnc.so",
-    {
-      "audio_encoder.amr"
+      "audio_decoder.evrc"
     }
   }
-#endif
 };
 
 const unsigned int SIZE_OF_CORE = sizeof(core) / sizeof(omx_core_cb_type);
