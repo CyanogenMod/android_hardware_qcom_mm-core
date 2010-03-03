@@ -415,7 +415,7 @@ typedef struct OMX_QCOM_PARAM_VIDEO_INTERLACETYPE
     OMX_VERSIONTYPE nVersion;/** OMX specification version information */
     OMX_U32 nPortIndex;    /** Portindex which is extended by this structure */
     OMX_BOOL bInterlace;  /** Interlace content **/
-};
+}OMX_QCOM_PARAM_VIDEO_INTERLACETYPE;
 
 typedef struct OMX_QCOM_CONFIG_INTERLACETYPE
 {
