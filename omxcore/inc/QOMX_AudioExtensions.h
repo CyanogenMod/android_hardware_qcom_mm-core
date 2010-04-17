@@ -59,8 +59,7 @@ extern "C"
 #define OMX_QCOM_INDEX_PARAM_AMRWBPLUS       "OMX.Qualcomm.index.audio.amrwbplus"
 #define OMX_QCOM_INDEX_PARAM_WMA10PRO        "OMX.Qualcomm.index.audio.wma10pro"
 #define OMX_QCOM_INDEX_PARAM_SESSIONID       "OMX.Qualcomm.index.audio.sessionId"
-#define OMX_QCOM_INDEX_PARAM_RECORDPATH      "OMX.Qualcomm.index.audio.recordpath"
-
+#define OMX_QCOM_INDEX_PARAM_VOICERECORDTYPE "OMX.Qualcomm.index.audio.VoiceRecord"
 
 typedef enum QOMX_AUDIO_AMRBANDMODETYPE {
     QOMX_AUDIO_AMRBandModeWB9              = 0x7F000001,/**< AMRWB Mode 9 = SID*/
@@ -158,9 +157,22 @@ typedef struct QOMX_AUDIO_STREAM_INFO_DATA {
  * STRUCT MEMBERS:
  * recPath : Record Path for encoding
  */
-typedef struct QOMX_AUDIO_RECORD_PATH {
-    OMX_U32 recPath;
-}QOMX_AUDIO_RECORD_PATH;
+typedef enum{
+
+QOMX_AUDIO_VOICE_TX,
+QOMX_AUDIO_VOICE_RX,
+QOMX_AUDIO_VOICE_MIXED,
+
+} QOMX_AUDIO_VOICERECORDMODETYPE;
+typedef struct QOMX_AUDIO_CONFIG_VOICERECORDTYPE {
+
+OMX_U32                            nSize;
+OMX_VERSIONTYPE                    nVersion;
+QOMX_AUDIO_VOICERECORDMODETYPE     eVoiceRecordMode;
+}  QOMX_AUDIO_CONFIG_VOICERECORDTYPE;
+
+
+
 
 #if defined( __cplusplus )
 }
