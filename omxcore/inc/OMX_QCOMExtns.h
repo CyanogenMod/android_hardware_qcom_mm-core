@@ -300,6 +300,7 @@ enum OMX_QCOM_EXTN_INDEXTYPE
     OMX_QcomIndexParamVideoSpark = 0x7F00000C,
       /*"OMX.QCOM.index.param.Vptype */
     OMX_QcomIndexParamVideoVp = 0x7F00000D,
+    OMX_QcomIndexQueryNumberOfVideoDecInstance = 0x7F00000E
 };
 
 /**
@@ -605,6 +606,15 @@ typedef struct QOMX_VIDEO_PARAM_SPARKTYPE {
     OMX_U32 nPortIndex;
     QOMX_VIDEO_SPARKFORMATTYPE eFormat;
 } QOMX_VIDEO_PARAM_SPARKTYPE;
+
+
+typedef struct QOMX_VIDEO_QUERY_DECODER_INSTANCES {
+    OMX_U32 nSize;
+    OMX_VERSIONTYPE nVersion;
+    OMX_U32 nPortIndex;
+    OMX_U32 nNumOfInstances;
+} QOMX_VIDEO_QUERY_DECODER_INSTANCES;
+
 
 
 #endif /* __OMX_QCOM_EXTENSIONS_H__ */
