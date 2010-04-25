@@ -25,8 +25,9 @@
 #OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 #ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #--------------------------------------------------------------------------
-
+ifeq ($(BOARD_USES_QCOM_LIBS),true)
 OMX_CORE_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 include $(OMX_CORE_PATH)/omxcore/Android.mk
+endif

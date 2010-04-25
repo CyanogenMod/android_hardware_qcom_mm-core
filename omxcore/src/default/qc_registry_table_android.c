@@ -29,8 +29,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                             O p e n M A X   w r a p p e r s
                              O p e n  M A X   C o r e
 
-  This module contains a dummy registry table for the QCOM's OpenMAX core
-  with placeholders for actual values
+  This module contains the registry table for the QCOM's OpenMAX core.
 
 *//*========================================================================*/
 
@@ -40,7 +39,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 omx_core_cb_type core[] =
 {
   {
-    "OMX.qcom.xxx.yyy.zzz",
+    "OMX.qcom.video.decoder.avc",
     NULL, // Create instance function
     // Unique instance handle
     {
@@ -50,9 +49,89 @@ omx_core_cb_type core[] =
       NULL
     },
     NULL,   // Shared object library handle
-    "abc.so",
+    "libOmxH264Dec.so",
     {
-      "efg.ijk"
+      "video_decoder.avc"
+    }
+  },
+  {
+    "OMX.qcom.video.decoder.mpeg4",
+    NULL, // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    "libOmxMpeg4Dec.so",
+    {
+      "video_decoder.mpeg4"
+    }
+  },
+  {
+    "OMX.qcom.video.decoder.h263",
+    NULL, // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    "libOmxMpeg4Dec.so",
+    {
+      "video_decoder.h263"
+    }
+  },
+   {
+    "OMX.qcom.video.encoder.mpeg4",
+    NULL, // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    "libOmxVidEnc.so",
+    {
+      "video_encoder.mpeg4"
+    }
+  },
+   {
+    "OMX.qcom.video.encoder.h263",
+    NULL, // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    "libOmxVidEnc.so",
+    {
+      "video_encoder.h263"
+    }
+  },
+  {
+    "OMX.qcom.audio.decoder.mp3",
+    NULL, // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    "libOmxMp3Dec.so",
+    {
+      "audio_decoder.mp3"
     }
   }
 };
