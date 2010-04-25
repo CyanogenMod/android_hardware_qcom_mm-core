@@ -29,8 +29,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                             O p e n M A X   w r a p p e r s
                              O p e n  M A X   C o r e
 
- This module contains a dummy registry table for the QCOM's OpenMAX core
- with placeholders for actual values
+ This module contains the registry table for the QCOM's OpenMAX core.
 
 *//*========================================================================*/
 
@@ -39,7 +38,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 omx_core_cb_type core[] =
 {
   {
-    "OMX.qcom.xxx.yyy.zzz",
+    "OMX.qcom.video.decoder.avc",
     NULL,   // Create instance function
     // Unique instance handle
     {
@@ -50,12 +49,132 @@ omx_core_cb_type core[] =
     },
     NULL,   // Shared object library handle
     #ifdef _ANDROID_
-    "abc.so",
+    "libOmxH264Dec.so",
     #else
-    "efg.so.1",
+    "libmm-vdec-omxh264.so.1",
     #endif
     {
-      "ijk.lmn"
+      "video_decoder.avc"
+    }
+  },
+  {
+    "OMX.qcom.video.decoder.mpeg4",
+    NULL,   // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    #ifdef _ANDROID_
+    "libOmxMpeg4Dec.so",
+    #else
+    "libmm-vdec-omxmp4.so.1",
+    #endif
+    {
+      "video_decoder.mpeg4"
+    }
+  },
+  {
+    "OMX.qcom.video.decoder.h263",
+    NULL,   // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    #ifdef _ANDROID_
+    "libOmxMpeg4Dec.so",
+    #else
+    "libmm-vdec-omxmp4.so.1",
+    #endif
+    {
+      "video_decoder.h263"
+    }
+  },
+   {
+    "OMX.qcom.video.encoder.mpeg4",
+    NULL,   // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    #ifdef _ANDROID_
+    "libOmxVidEnc.so",
+    #else
+    "libmm-venc-omx.so.1",
+    #endif
+    {
+      "video_encoder.mpeg4"
+    }
+  },
+   {
+    "OMX.qcom.video.encoder.h263",
+    NULL,   // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    #ifdef _ANDROID_
+    "libOmxVidEnc.so",
+    #else
+    "libmm-venc-omx.so.1",
+    #endif
+    {
+      "video_encoder.h263",
+    }
+  },
+  {
+    "OMX.qcom.audio.decoder.mp3",
+    NULL,   // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    #ifdef _ANDROID_
+    "libOmxMp3Dec.so",
+    #else
+    "libmm-adec-omxmp3.so.1",
+    #endif
+    {
+      "audio_decoder.mp3"
+    }
+  },
+  {
+    "OMX.qcom.audio.decoder.tunneled.mp3",
+    NULL,   // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    #ifdef _ANDROID_
+    "libOmxMp3Dec.so",
+    #else
+    "libmm-adec-omxmp3.so.1",
+    #endif
+    {
+      "audio_decoder.mp3"
     }
   }
 };
