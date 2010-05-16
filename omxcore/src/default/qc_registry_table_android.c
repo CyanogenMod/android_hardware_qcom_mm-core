@@ -117,22 +117,6 @@ omx_core_cb_type core[] =
     {
       "video_encoder.h263"
     }
-  },
-  {
-    "OMX.qcom.audio.decoder.mp3",
-    NULL, // Create instance function
-    // Unique instance handle
-    {
-      NULL,
-      NULL,
-      NULL,
-      NULL
-    },
-    NULL,   // Shared object library handle
-    "libOmxMp3Dec.so",
-    {
-      "audio_decoder.mp3"
-    }
   }
 };
 
