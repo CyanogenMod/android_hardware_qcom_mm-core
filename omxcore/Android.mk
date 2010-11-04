@@ -45,6 +45,8 @@ else ifeq "$(findstring qsd8k,$(TARGET_BOARD_PLATFORM))" "qsd8k"
 MM_CORE_TARGET = 8250
 else ifeq "$(findstring msm7627,$(TARGET_BOARD_PLATFORM))" "msm7627"
 MM_CORE_TARGET = 7627
+else ifeq "$(findstring msm7k,$(TARGET_BOARD_PLATFORM))" "msm7k"
+MM_CORE_TARGET = 7627
 else ifeq "$(findstring msm7625,$(TARGET_BOARD_PLATFORM))" "msm7625"
 MM_CORE_TARGET = 7625
 else ifeq "$(findstring msm7630,$(TARGET_BOARD_PLATFORM))" "msm7630"
