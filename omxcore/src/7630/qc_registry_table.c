@@ -334,6 +334,26 @@ omx_core_cb_type core[] =
     }
   },
   {
+    "OMX.qcom.audio.encoder.aac",
+    NULL,   // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    #ifdef _ANDROID_
+    "libOmxAacEnc.so",
+    #else
+    "libmm-aenc-omxaac.so.1",
+    #endif
+    {
+      "audio_encoder.aac"
+    }
+  },
+  {
     "OMX.qcom.audio.decoder.Qcelp13",
     NULL,   // Create instance function
     // Unique instance handle
