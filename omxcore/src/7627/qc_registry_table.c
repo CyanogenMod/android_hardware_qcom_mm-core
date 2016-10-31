@@ -78,6 +78,27 @@ omx_core_cb_type core[] =
     }
   },
   {
+    "OMX.qcom.video.decoder.divx",
+    NULL,   // Create instance function
+    // Unique instance handle
+     {
+       NULL,
+       NULL,
+       NULL,
+       NULL
+     },
+      NULL,   // Shared object library handle
+     #ifdef _ANDROID_
+     "libOmxMpeg4Dec.so",
+     #else
+     "libmm-vdec-omxmp4.so.1",
+     #endif
+     {
+     "video_decoder.divx"
+     }
+   },
+    
+  {
     "OMX.qcom.video.decoder.vc1",
     NULL,   // Create instance function
     // Unique instance handle
@@ -135,6 +156,46 @@ omx_core_cb_type core[] =
     #endif
     {
       "video_encoder.mpeg4"
+    }
+  },
+  {
+    "OMX.qcom.video.decoder.spark",
+    NULL,   // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    #ifdef _ANDROID_
+    "libOmxMpeg4Dec.so",
+    #else
+    "libmm-vdec-omxmp4.so.1",
+    #endif
+    {
+      "video_decoder.spark"
+    }
+  },
+ {
+    "OMX.qcom.video.decoder.vp",
+    NULL,   // Create instance function
+    // Unique instance handle
+    {
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    },
+    NULL,   // Shared object library handle
+    #ifdef _ANDROID_
+    "libOmxOn2Dec.so",
+    #else
+    "libOmxOn2Dec.so",
+    #endif
+    {
+      "video_decoder.vp"
     }
   },
    {

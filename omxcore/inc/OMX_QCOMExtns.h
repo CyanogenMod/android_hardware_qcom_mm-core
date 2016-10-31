@@ -80,6 +80,8 @@ struct OMX_QCOM_PARAM_MEMMAPENTRYTYPE
     OMX_U64 nPhysicalAddress;
 };
 
+#define QOMX_VIDEO_IntraRefreshRandom (OMX_VIDEO_IntraRefreshVendorStartUnused + 0)
+
 #define OMX_QCOM_PORTDEFN_EXTN   "OMX.QCOM.index.param.portdefn"
 /* Allowed APIs on the above Index: OMX_GetParameter() and OMX_SetParameter() */
 
@@ -280,56 +282,123 @@ enum OMX_QCOM_EXTN_INDEXTYPE
     /*"OMX.QCOM.index.config.interlaceformat */
     OMX_QcomIndexConfigInterlaced = 0x7F000005,
 
-   /* "OMX.QCOM.index.param.syntaxhdr" */
-    OMX_QcomIndexParamVideoSyntaxHdr = 0x7F000006,
+    /*"OMX.QCOM.index.param.syntaxhdr" */
+    QOMX_IndexParamVideoSyntaxHdr = 0x7F000006,
 
-    /* "OMX.QCOM.index.config.intraperiod" */
-    OMX_QcomIndexConfigVideoIntraperiod = 0x7F000007,
+    /*"OMX.QCOM.index.config.intraperiod" */
+    QOMX_IndexConfigVideoIntraperiod = 0x7F000007,
 
-    /*"OMX.QCOM.index.config.ulbufferOccupancy" */
-    OMX_QcomIndexConfigVideoUlbufferOccupancy = 0x7F000008,
+    /*"OMX.QCOM.index.config.randomIntrarefresh" */
+    QOMX_IndexConfigVideoIntraRefresh = 0x7F000008,
 
-    /* "OMX.QCOM.index.config.randomIntrarefresh" */
-    OMX_QcomIndexConfigVideoRandomIntrarefresh = 0x7F000009,
+    /*"OMX.QCOM.index.config.video.TemporalSpatialTradeOff" */
+    QOMX_IndexConfigVideoTemporalSpatialTradeOff = 0x7F000009,
 
-	/* "OMX.QCOM.index.config.QPRange" */
-    OMX_QcomIndexConfigVideoQPRange = 0x7F00000A,
-   /*"OMX.QCOM.index.param.Divxtype */
+    /*"OMX.QCOM.index.param.video.EncoderMode" */
+    QOMX_IndexParamVideoEncoderMode = 0x7F00000A,
+
+    /*"OMX.QCOM.index.param.Divxtype */
     OMX_QcomIndexParamVideoDivx = 0x7F00000B,
-      /*"OMX.QCOM.index.param.Sparktype */
+
+    /*"OMX.QCOM.index.param.Sparktype */
     OMX_QcomIndexParamVideoSpark = 0x7F00000C,
-      /*"OMX.QCOM.index.param.Vptype */
+
+    /*"OMX.QCOM.index.param.Vptype */
     OMX_QcomIndexParamVideoVp = 0x7F00000D,
+
+    OMX_QcomIndexQueryNumberOfVideoDecInstance = 0x7F00000E
 };
 
 /**
+ * Enumeration used to define the video encoder modes
+ *
+ * ENUMS:
+ *  EncoderModeDefault : Default video recording mode.
+ *                       All encoder settings made through
+ *                       OMX_SetParameter/OMX_SetConfig are applied. No
+ *                       parameter is overridden.
+ *  EncoderModeMMS : Video recording mode for MMS (Multimedia Messaging
+ *                   Service). This mode is similar to EncoderModeDefault
+ *                   except that here the Rate control mode is overridden
+ *                   internally and set as a variant of variable bitrate with
+ *                   variable frame rate. After this mode is set if the IL
+ *                   client tries to set OMX_VIDEO_CONTROLRATETYPE via
+ *                   OMX_IndexParamVideoBitrate that would be rejected. For
+ *                   this, client should set mode back to EncoderModeDefault
+ *                   first and then change OMX_VIDEO_CONTROLRATETYPE.
+ */
+typedef enum QOMX_VIDEO_ENCODERMODETYPE
+{
+    QOMX_VIDEO_EncoderModeDefault        = 0x00,
+    QOMX_VIDEO_EncoderModeMMS            = 0x01,
+    QOMX_VIDEO_EncoderModeMax            = 0x7FFFFFFF
+} QOMX_VIDEO_ENCODERMODETYPE;
+
+/**
+ * This structure is used to set the video encoder mode.
+ *
+ * STRUCT MEMBERS:
+ *  nSize      : Size of the structure in bytes
+ *  nVersion   : OMX specification version info
+ *  nPortIndex : Port that this structure applies to
+ *  nMode : defines the video encoder mode
+ */
+typedef struct QOMX_VIDEO_PARAM_ENCODERMODETYPE {
+    OMX_U32 nSize;
+    OMX_VERSIONTYPE nVersion;
+    OMX_U32 nPortIndex;
+    QOMX_VIDEO_ENCODERMODETYPE nMode;
+} QOMX_VIDEO_PARAM_ENCODERMODETYPE;
+
+/**
  * This structure describes the parameters corresponding to the
- * OMX_QCOM_VIDEO_PARAM_SYNTAXHDRTYPE extension. This parameter can be queried
+ * QOMX_VIDEO_SYNTAXHDRTYPE extension. This parameter can be queried
  * during the loaded state.
  */
-typedef struct OMX_QCOM_VIDEO_PARAM_SYNTAXHDRTYPE
+
+typedef struct QOMX_VIDEO_SYNTAXHDRTYPE
 {
    OMX_U32 nSize;           /** Size of the structure in bytes */
    OMX_VERSIONTYPE nVersion;/** OMX specification version information */
-   OMX_U32 nPortIndex;    /** Portindex which is extended by this structure */
+   OMX_U32 nPortIndex;      /** Portindex which is extended by this structure */
+   OMX_U32 nBytes;    	    /** The number of bytes filled in to the buffer */
+   OMX_U8 data[1];          /** Buffer to store the header information */
+} QOMX_VIDEO_SYNTAXHDRTYPE;
 
-   OMX_U8* pBuff;         /** Buffer to store the header information */
-   OMX_U32 nBuffLen;      /** The buffer length in bytes */
-   OMX_U32 nFilledLen;    /** The number of bytes filled in to the buffer */
-} OMX_QCOM_VIDEO_PARAM_SYNTAXHDRTYPE;
+/**
+ * This structure describes the parameters corresponding to the
+ * QOMX_VIDEO_TEMPORALSPATIALTYPE extension. This parameter can be set
+ * dynamically during any state except the state invalid.  This is primarily
+ * used for setting MaxQP from the application.  This is set on the out port.
+ */
+
+typedef struct QOMX_VIDEO_TEMPORALSPATIALTYPE
+{
+   OMX_U32 nSize;           /** Size of the structure in bytes */
+   OMX_VERSIONTYPE nVersion;/** OMX specification version information */
+   OMX_U32 nPortIndex;      /** Portindex which is extended by this structure */
+   OMX_U32 nTSFactor;       /** Temoral spatial tradeoff factor value in 0-100 */
+} QOMX_VIDEO_TEMPORALSPATIALTYPE;
 
 /**
  * This structure describes the parameters corresponding to the
  * OMX_QCOM_VIDEO_CONFIG_INTRAPERIODTYPE extension. This parameter can be set
  * dynamically during any state except the state invalid.  This is set on the out port.
  */
-typedef struct OMX_QCOM_VIDEO_CONFIG_INTRAPERIODTYPE
+
+typedef struct QOMX_VIDEO_INTRAPERIODTYPE
 {
    OMX_U32 nSize;           /** Size of the structure in bytes */
    OMX_VERSIONTYPE nVersion;/** OMX specification version information */
    OMX_U32 nPortIndex;      /** Portindex which is extended by this structure */
-   OMX_U32 nPFrames;        /** The number of "p" frames between two "I" frames */
-} OMX_QCOM_VIDEO_CONFIG_INTRAPERIODTYPE;
+   OMX_U32 nIDRPeriod;      /** This specifies coding a frame as IDR after every nPFrames
+			        of intra frames. If this parameter is set to 0, only the
+				first frame of the encode session is an IDR frame. This
+				field is ignored for non-AVC codecs and is used only for
+				codecs that support IDR Period */
+   OMX_U32 nPFrames;         /** The number of "P" frames between two "I" frames */
+   OMX_U32 nBFrames;         /** The number of "B" frames between two "I" frames */
+} QOMX_VIDEO_INTRAPERIODTYPE;
 
 /**
  * This structure describes the parameters corresponding to the
@@ -477,6 +546,7 @@ typedef enum OMX_QCOM_EXTRADATATYPE
    OMX_ExtraDataH264 = 0x7F000002,
    OMX_ExtraDataVC1 = 0x7F000003,
    OMX_ExtraDataFrameDimension = 0x7F000004,
+   OMX_ExtraDataVideoEncoderSliceInfo = 0x7F000005
 } OMX_QCOM_EXTRADATATYPE;
 
 
@@ -605,6 +675,15 @@ typedef struct QOMX_VIDEO_PARAM_SPARKTYPE {
     OMX_U32 nPortIndex;
     QOMX_VIDEO_SPARKFORMATTYPE eFormat;
 } QOMX_VIDEO_PARAM_SPARKTYPE;
+
+
+typedef struct QOMX_VIDEO_QUERY_DECODER_INSTANCES {
+    OMX_U32 nSize;
+    OMX_VERSIONTYPE nVersion;
+    OMX_U32 nPortIndex;
+    OMX_U32 nNumOfInstances;
+} QOMX_VIDEO_QUERY_DECODER_INSTANCES;
+
 
 
 #endif /* __OMX_QCOM_EXTENSIONS_H__ */
